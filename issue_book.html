@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue Book</title>
+</head>
+<body>
+    <h1>Issue Book to Member</h1>
+    <form method="POST">
+        <label for="book_id">Select Book:</label>
+        <select name="book_id" required>
+            {% for book in books %}
+                {% if book.status == 'Available' %}
+                    <option value="{{ book.id }}">{{ book.title }} by {{ book.author }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br><br>
+
+        <label for="member_id">Select Member:</label>
+        <select name="member_id" required>
+            {% for member in members %}
+                <option value="{{ member.id }}">{{ member.name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="due_date">Due Date:</label>
+        <input type="date" name="due_date" required><br><br>
+
+        <button type="submit">Issue Book</button>
+    </form>
+</body>
+</html>
